@@ -1,13 +1,4 @@
-"""Paper A: nonlocal length c recovered from the MD buckling loads (inverse problem), compared with the frozen-wave c.
-For each [100] column the c that makes the SD load (Euler-Bernoulli SD + Engesser shear) equal to
-  (i)  the raw MD load, and
-  (ii) the MD load corrected to zero axial strain, P_MD/(1 + s*eps_cr), s = slope/intercept of the
-       linear fit of P_MD/P_SD vs eps_cr for that wire (Fig. 2c),
-is found by root finding.  Writes Veusz-ready CSVs (numeric columns, one header row, blank = missing):
-  S2_c_from_buckling.csv          one row per column (all data)
-  S2_c_from_buckling_veusz.csv    wide format: one x/y column pair per wire and quantity
-  S2_c_scan_veusz.csv             P_SD(c)/P_local against c for every column + MD levels (for the inversion plot)
-usage: python3 c_from_buckling.py <PaperA data folder> <results_full/csv folder>
+"""
 """
 import sys, os, csv, numpy as np
 from scipy.optimize import brentq

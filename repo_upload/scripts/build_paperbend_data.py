@@ -1,11 +1,4 @@
-"""Build the Paper A data files (frozen-wave test and load-ramp buckling) from the full LAMMPS run.
-usage: python3 build_paperA_data.py <results_full folder> <output data folder>
-   needs analyse_loadramp.py in the same folder.
-Writes
-  S3_frozenwave_<o>_<w>.csv : k, wavelength, MD stiffness, local-3D ratio, MD/X0, SD ratio 1+sign(c)c^2k^2, SD stiffness
-  S3_frozenwave_fits.csv    : X0, c (SD), rms, Eringen c^2, excess c for every wire and stiffness
-  S3_frozenwave_fitcurves_SD.csv : smooth SD curves (k = 0 ... 0.25 1/A) for every wire and stiffness
-  S2_loadramp_buckling.csv, S2_loadramp_raw.csv : [100] load-ramp columns (via analyse_loadramp.py)
+"""
 """
 import sys, os, csv, glob, math, subprocess
 src, out = sys.argv[1], sys.argv[2]; os.makedirs(out, exist_ok=True)
@@ -37,4 +30,4 @@ with open(os.path.join(out, 'S3_frozenwave_fitcurves_SD.csv'), 'w', newline='') 
         k = 0.25*i/100; w.writerow([round(k, 5)] + [sd(curves[k_], k) for k_ in keys])
 here = os.path.dirname(os.path.abspath(__file__))
 subprocess.run([sys.executable, os.path.join(here, 'analyse_loadramp.py'), os.path.join(src, 's2'), out, C, '100'], check=True)
-print('Paper A data written to', out)
+print('data written to', out)

@@ -1,6 +1,5 @@
-"""Continuum nonlocal Euler-Bernoulli column buckling.
-   SD (Romano-Barretta stress-driven, Helmholtz/bi-exponential kernel, differential form + CBCs)
-   and Eringen differential (strain-driven) model.  Units: any consistent; returns P_cr."""
+"""
+"""
 import numpy as np
 from scipy.optimize import brentq
 
